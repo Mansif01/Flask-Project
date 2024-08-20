@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="column is-6 is-offset-3">
+    <h3 class="title">Your Account</h3>
+
+    <div class="box">
+        {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="notification is-danger">
+                        {{ messages[0] }}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        <table class="table">
+        <tbody>
+            <tr>
+                <th>Account No.</th>
+                <th>{{ current_user.id }}</th>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <th>{{ current_user.email }}</th>
+            </tr>
+            <tr>
+                <th>First Name</th>
+                <th>{{ current_user.firstname }}</th>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <th>{{ current_user.lastname }}</th>
+            </tr>
+            <tr>
+                <th>Phone No.</th>
+                <th>{{ current_user.phone }}</th>
+            </tr>
+            <tr>
+                <th>Role</th>
+                <th>{{ current_user.role }}</th>
+            </tr>
+            <tr>
+                <th>Date Of Birth</th>
+                <th>{{ current_user.date_of_birth }}</th>
+            </tr>
+            <tr>
+                <th>Postcode</th>
+                <th>{{ current_user.postcode }}</th>
+            </tr>
+            <tr>
+                    <th>Password</th>
+                    <td><a style='color: blue' href="{{ url_for('users.update_password') }}">Change Password</a></td>
+                </tr>
+        </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}
